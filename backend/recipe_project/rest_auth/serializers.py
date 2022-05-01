@@ -5,13 +5,14 @@ from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
 class UserSerialzer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='user.username')
     email = serializers.EmailField(
         required=True,
         validators=[UniqueValidator(queryset=User.objects.all())]
         )
     class Meta:
         model = get_user_model()
-        fields =['id','username','email','password']
+        fields =['id','username','email','password','owner']
         extra_kwargs = {'password': {'write_only': True}}
 
     # overriding the create method for the api user registration

@@ -13,6 +13,7 @@ class Recipe (models.Model):
     des = models.CharField(max_length=100, blank=False)
     serving = models.IntegerField(blank=False, null=False, default=1)
     detail = models.TextField(default="Please add detail instructions")
+    owner = models.ForeignKey('auth.user',related_name='recipes',on_delete=models.CASCADE, null=True)
 
     ingredients = models.ManyToManyField(
         Ingredient,

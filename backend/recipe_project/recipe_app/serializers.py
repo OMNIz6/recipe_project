@@ -2,6 +2,7 @@ from dataclasses import field
 from pyexpat import model
 from rest_framework import serializers
 from recipe_app.models import Ingredient, Recipe, Recipe_Ingredient
+from rest_auth.serializers import UserSerialzer
 
 class IngredientSerializer(serializers.ModelSerializer):
 
@@ -21,11 +22,12 @@ class Recipe_IngredientSerializer(serializers.ModelSerializer):
 class RecipeSerializer(serializers.ModelSerializer):
 
     ingredients = Recipe_IngredientSerializer(source='recipe_ingredient_set', many=True)
+    owner = UserSerialzer(read_only=True)
     detail = serializers.CharField(required=True,allow_null=False)
     class Meta:
         model=Recipe
         depth=1
-        fields=['id','name','des','serving','detail','ingredients',]
+        fields=['id','name','des','serving','detail','ingredients','owner']
     
     def create(self, validated_data):
         ingredients_data = validated_data.pop('recipe_ingredient_set')
