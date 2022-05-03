@@ -1,0 +1,82 @@
+.signup-container {
+    text-align: center;
+}
+
+
+.signup-content {
+    background: #f5f5f5;
+    border: #C55A11 solid 2px;
+    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+    border-radius: 2px;
+    width: 400px;
+    display: inline-block;
+    margin-top: 130px;
+    vertical-align: middle;
+    position: relative;    
+    padding: 35px;
+}
+
+.social-btn {
+    margin: auto;
+    margin-bottom: 15px;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+
+.social-btn.google {
+    margin-top: 7px;
+}
+
+
+.social-btn.github img {
+    height: 24px;
+    margin-left: 3px;
+}
+
+.login-link {
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+}
+
+.signup-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 30px;
+    color: #C55A11;
+}
+.form-item{
+    margin-top: 0.3rem;
+}
+.form-control{
+    border-color: #C55A11 !important;
+}
+.form-select{
+    border: unset;
+    width: 60% !important;
+    margin: 0.1rem auto;
+    border-bottom: solid 2px #C55A11;
+}
+.btn-block{
+    all: unset;
+    color: #C55A11;
+    border: solid 2px #C55A11;
+    background-color:#ffffff;
+    padding: 0.2rem 0.3rem;
+    border-radius: 6px;
+    appearance: none !important;
+    background: none;
+    font-weight: 600;
+}
+.btn-block:hover{
+    color: #ffffff;
+    background-color: #C55A11;
+}
+.ferror{
+    color: red;
+    position: absolute;
+    left: 50%;
+    bottom: -0.2rem;
+    transform: translate(-50%, -50%);
+}

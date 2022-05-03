@@ -1,0 +1,109 @@
+.detail-container{
+    padding: 1rem 18rem;
+    font-family: 400 "Source Sans Pro",sans-serif;
+}
+.detail-container hr{
+    border-color: #C55A11;
+}
+.detail-header-con{
+    display: flex;
+}
+.detail-header{
+    font-size: 3rem;
+    font-family: 'Roboto Slab', serif;
+}
+.detail-img-con{
+    display: flex;
+}
+.detail-img{
+    display: inline-block;
+    margin: auto;
+    max-width: 50%;
+}
+.recipe-info-con{
+    margin: auto;
+    border: 2px #5f5d5d solid;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+}
+.recipe-info-con span{
+    display: inline-block;
+    margin: 0.7rem 0.2rem;
+}
+.attr-1{
+    font-weight: bold;
+}
+.detail-ingredient-con{
+    width: 80%;
+    padding-left: 1rem;
+    border-right:2px solid #C55A11;
+    border-left:2px solid #C55A11;
+    padding-bottom: 2rem;
+    margin: auto;
+}
+.detail-ingredient-header{
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.8rem;
+    text-align: center;
+}
+.ingredient-con{
+    padding:0.3rem 2rem;
+    
+}
+.ingredient-row{
+    display: flex;
+    margin-top: 0.9rem;
+    font-size: 1.3rem;
+    display: block;
+    line-height: 1.5rem;
+    text-align: center;
+}
+.ingredient-quantity{
+    display: block;
+    
+}
+.recipe-info{
+    display: flex;
+}
+.detail-direction-header{
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.8rem;
+    text-align: center;
+    border-bottom: 2px solid #C55A11;
+    width: 15rem;
+    margin: 2rem auto;
+}
+.detail-direction{
+    white-space: pre-line;
+    line-height: 1.5rem;
+    margin-bottom: 10rem;
+}
+.btn{
+    all: unset;
+    color: #fff;
+    display: inline-block;
+    border: solid 2px #C55A11;
+    background-color: #C55A11;
+    padding: 0 0.3rem;
+    border-radius: 6px;
+    font-weight: 600;
+    width: 4rem;
+    height: 2rem;
+    display: block;
+    text-align: center;
+}
+.btn:hover{
+    color: #C55A11;
+    background-color: #fff;
+    cursor: pointer;
+}
+.btn-delete, .btn-edit{
+    margin: auto;
+}
+.btn-edit{
+    margin-left: 20rem;
+}
+.btn-delete{
+    border: solid 2px #b90e08;
+    background-color: #b90e08;
+}

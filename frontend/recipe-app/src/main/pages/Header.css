@@ -1,0 +1,99 @@
+.header-con{
+    background-color: #ffffff;
+    display: flex;
+    padding: 0.7rem 12rem;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.27);
+}
+.btn-out{
+    all: unset;
+    color: #C55A11;
+    display: inline-block;
+    border: solid 2px #C55A11;
+    background-color: #ffffff;
+    padding: 0 0.3rem;
+    border-radius: 6px;
+    font-weight: 600;
+    height: 2rem;
+    margin-top: 0.3rem;
+}
+.btn-out:hover{
+    color: #ffffff;
+    background-color: #C55A11;
+    cursor: pointer;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap');
+p{
+    margin:0;
+}
+.logo{
+    font-family: 'Dongle', sans-serif;
+    color: #C55A11;
+    font-size: 3rem;
+    line-height: 2rem;
+    padding-top: 0.6rem;
+}
+.logo-con{
+    padding: 0rem;
+}
+
+.search {
+    width: 100%;
+    position: relative;
+    display: flex;
+    
+}
+  
+.searchTerm {
+    width: 100%;
+    border: 2px solid #C55A11;
+    border-right: none;
+    padding: 0.6rem;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #000;
+    font-size: 1.1rem;
+}
+  
+  
+.searchButton {
+    
+    border: 2px solid #C55A11;
+    border-left: none;
+    background: #fff;
+    text-align: center;
+    color: rgb(122, 120, 120);
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 1rem;
+    
+}
+  
+  /*Resize the wrap to see the search bar change!*/
+.search-con{
+    margin: auto;
+    width: 23rem;
+}
+
+
+
+@media only screen and (max-width: 768px){
+  .header-con{
+    padding: 0.7rem 0.5rem;
+    background-color: #C55A11;
+    box-shadow: none;
+  }
+  .logo-con{
+    display: none;
+  }
+  .searchTerm {
+    font-size: 0.9rem;
+  }
+  .search-con{
+    margin: 0 auto 0 0;
+  }
+  .btn-out{
+    height: auto;
+    margin-top: 0;
+  }
+}

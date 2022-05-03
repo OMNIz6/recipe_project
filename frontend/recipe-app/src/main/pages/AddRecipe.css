@@ -1,0 +1,35 @@
+.recipe-form-item{
+    display: flex;
+    margin-top: 3rem;
+}
+.form-label{
+    font-size: 1.2rem;
+    margin: auto;
+    width: 25%;
+    font-weight: bold;
+    color: #642b05;
+}
+.form-input{
+    font-size: 1.2rem;
+    width: 40%;
+    text-align: center;
+    margin-right: auto;
+}
+.form-input:focus{
+    text-align: justify;
+    outline: none;
+}
+.form-input-img{
+    font-size: 1rem;
+}
+.close-btn{
+    color: rgb(90, 88, 88);
+    font-weight: bolder;
+}
+.close-btn:hover{
+    cursor: pointer;
+}
+.btn-submit{
+    margin:5rem auto;
+    width: 5rem;
+}
