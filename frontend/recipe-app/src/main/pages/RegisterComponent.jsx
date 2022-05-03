@@ -10,7 +10,8 @@ export default class RegisterComponent extends Component{
             username : "",
             email : "",
             password : "",
-            merror: "" 
+            cpassword:"",
+            merror: {}
         }
     }
     handleInputChange = (event) => {
@@ -25,19 +26,25 @@ export default class RegisterComponent extends Component{
     handleSubmit = (event) =>{
         event.preventDefault();
 
-        const regRequest = Object.assign({}, this.state);
-        
-        AuthServices.registerUser(regRequest)
-        .then(
-            response =>{
-                window.location.href= "/login"
-            }
-        ).catch(error => {
+        if(this.state.password!==this.state.cpassword){
             this.setState({
-                merror : error.response.data
+                merror : {message:"Password does not match"}
             })
+        }else{
+            const regRequest = Object.assign({}, this.state);
             
-        });
+            AuthServices.registerUser(regRequest)
+            .then(
+                response =>{
+                    window.location.href= "/login"
+                }
+            ).catch(error => {
+                this.setState({
+                    merror : error.response.data
+                })
+                
+            });
+        }
     }
 
     render(){
@@ -63,8 +70,8 @@ export default class RegisterComponent extends Component{
                         </div>
                         <div className="form-item">
                             <input type="password" name="cpassword" 
-                                className="form-control" placeholder="Confirm Password"
-                                 required/>
+                                className="form-control" placeholder="Confirm Password" 
+                                value={this.state.cpassword} onChange={this.handleInputChange} required/>
                         </div>
                         <span className="login-link">Already have an account? <Link to="/login">Login!</Link></span>
                         <div className="form-item">

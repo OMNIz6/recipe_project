@@ -16,7 +16,6 @@ class SerchRecipes extends Component{
     componentDidMount(){
         RecipeService.searchRecipes(this.state.keyword)
             .then((response) => {
-                console.log(response.data)
                 this.setState({
                     recipes: response.data
                 });

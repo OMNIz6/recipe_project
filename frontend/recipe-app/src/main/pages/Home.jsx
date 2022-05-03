@@ -14,11 +14,9 @@ export default class Home extends Component{
     componentDidMount(){
         RecipeService.getRecipes()
             .then((response) => {
-                console.log(response.data)
                 this.setState({
                     recipes: response.data
                 });
-            console.log(this.state.recipes)
             
         }).catch(function(e) {
             console.log('ERROR ', e);

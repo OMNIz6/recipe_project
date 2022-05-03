@@ -57,7 +57,6 @@ import { withRouter } from "../services/util/Util";
         this.setState({
             [inputName] : inputValue
         })
-        console.log(this.state[inputName])
     }
     handleInputChangeIg = (event,i) => {
         let ingredients = this.state.ingredients;
@@ -83,7 +82,6 @@ import { withRouter } from "../services/util/Util";
     handleSubmit = (event) =>{
         event.preventDefault();
         const request = Object.assign({}, this.state);
-        console.log(request)
         delete request['img']
         RecipeService.updateRecipe(this.state.id,request,this.state.img)
         .then(

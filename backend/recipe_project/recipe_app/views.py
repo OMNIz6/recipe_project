@@ -14,7 +14,6 @@ class IngredientView(generics.ListCreateAPIView):
 
 class RecipeView(generics.ListCreateAPIView):
     model = Recipe
-
     queryset = Recipe.objects.all() 
     parser_classes = (MultiPartParser, FormParser)
     serializer_class = RecipeSerializer
@@ -22,36 +21,40 @@ class RecipeView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+# overriding the default create def for the image insertion
     def create(self, request, *args, **kwargs):
         img = request.FILES['img']
         recipe = json.loads(request.data['recipe'])
         recipe['img'] = img
+
         serializer = self.get_serializer(data=recipe)
         serializer.is_valid(raise_exception=True)
+
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
+
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 class RecipeDetailView(generics.RetrieveUpdateDestroyAPIView):
     model = Recipe
     queryset = Recipe.objects.all() 
     serializer_class = RecipeSerializer
-
     permission_classes = [IsOwnerOrReadOnly]
 
+    # overriding the default update def for the image insertion
     def update(self, request, *args, **kwargs):
         img = request.FILES['img']
         recipe = json.loads(request.data['recipe'])
         recipe['img'] = img
+
         partial = kwargs.pop('partial', False)
         instance = self.get_object()
+
         serializer = self.get_serializer(instance, data=recipe, partial=partial)
         serializer.is_valid(raise_exception=True)
         self.perform_update(serializer)
 
         if getattr(instance, '_prefetched_objects_cache', None):
-            # If 'prefetch_related' has been applied to a queryset, we need to
-            # forcibly invalidate the prefetch cache on the instance.
             instance._prefetched_objects_cache = {}
 
         return Response(serializer.data)

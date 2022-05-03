@@ -14,12 +14,11 @@ export default class LoginComponent extends Component{
     }
     handleSubmit = (event) =>{
         event.preventDefault();
-        console.log(this.state.username);
+        
         const loginRequest = Object.assign({}, this.state);
         AuthServices.loginUser(loginRequest)
         .then((response) => {
-
-            AuthServices.saveLogin(response.data.username, response.data.token, response.data.role);
+            AuthServices.saveLogin(this.state.username, response.data.token);
             this.setState({
                 merror : "success"
             })

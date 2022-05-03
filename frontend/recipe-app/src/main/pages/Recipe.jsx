@@ -11,16 +11,18 @@ class Recipe extends Component{
             id: parseInt(this.props.params.id),
             recipe : {},
             ingredients:[],
+            username:''
         }
     }
     componentDidMount(){
         RecipeService.getRecipe(this.state.id)
             .then((response) => {
-                
                 this.setState({
                     recipe: response.data,
-                    ingredients : response.data.ingredients
+                    ingredients : response.data.ingredients,
+                    username:response.data.owner.username
                 });
+            
             
         }).catch(function(e) {
             console.log('ERROR ', e);
@@ -39,12 +41,20 @@ class Recipe extends Component{
     render(){
         return (
             <div className='detail-container'>
+
+                {localStorage.getItem('authenticatedUser') === this.state.username?
                 <div className='detail-header-con'>
                     <h1 className='detail-header'>{this.state.recipe.name}</h1> 
                     <Link className="btn-edit" to={`/recipe/edit/${this.state.recipe.id}`}><button className="btn " >Edit</button> </Link>
 
                     <button className="btn btn-delete" onClick={this.deleteRecipe}>Delete</button>
                 </div>
+                :
+                <div className='detail-header-con'>
+                    <h1 className='detail-header'>{this.state.recipe.name}</h1> 
+                </div>
+                }
+
                 <div className='detail-des-con'><p className='detail-des'>{this.state.recipe.des}</p></div>
                 <hr/>
                 <div className='detail-img-con'>

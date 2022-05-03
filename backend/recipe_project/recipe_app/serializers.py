@@ -32,8 +32,8 @@ class RecipeSerializer(serializers.ModelSerializer):
         depth=1
         fields=['id','name','des','servings','detail','ingredients','owner','img']
     
+    # overrding the create method foor many to many table insertions
     def create(self, validated_data):
-        print(validated_data)
         ingredients_data = validated_data.pop('recipe_ingredient_set')
         recipe = Recipe.objects.create(**validated_data)
         for recipe_ingredient_data in ingredients_data:
@@ -48,8 +48,9 @@ class RecipeSerializer(serializers.ModelSerializer):
             Recipe_Ingredient.objects.create(recipe=recipe,ingredient= ingredient, **recipe_ingredient_data)
         return recipe
         
-
+       # overrding the update method foor many to many table insertions
     def update(self, instance, validated_data):
+
         instance.name = validated_data.get('name')
         instance.des = validated_data.get('des')
         instance.servings = validated_data.get('servings')
@@ -57,6 +58,8 @@ class RecipeSerializer(serializers.ModelSerializer):
         instance.img = validated_data.get('img')
         instance.save()
         ingredients_data = validated_data.pop('recipe_ingredient_set')
+
+        # deleting the ingredients to avoid duplication
         Recipe_Ingredient.objects.filter(recipe=instance).delete()
         for recipe_ingredient_data in ingredients_data:
             ingredient_data = recipe_ingredient_data.pop('ingredient')
@@ -64,5 +67,4 @@ class RecipeSerializer(serializers.ModelSerializer):
             if not ingredient:
                 ingredient = Ingredient.objects.create(name=ingredient_data.get('name'))
             Recipe_Ingredient.objects.create(recipe=instance,ingredient= ingredient, **recipe_ingredient_data)
-        print(instance.ingredients)
         return instance

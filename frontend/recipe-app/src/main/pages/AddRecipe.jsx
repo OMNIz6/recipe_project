@@ -37,7 +37,6 @@ export default class AddRecipe extends Component{
         this.setState({
             [inputName] : inputValue
         })
-        console.log(this.state[inputName])
     }
     handleInputChangeIg = (event,i) => {
         let ingredients = this.state.ingredients;
@@ -63,7 +62,6 @@ export default class AddRecipe extends Component{
     handleSubmit = (event) =>{
         event.preventDefault();
         const request = Object.assign({}, this.state);
-        console.log(request)
         delete request['img']
         RecipeService.addRecipe(request,this.state.img)
         .then(
